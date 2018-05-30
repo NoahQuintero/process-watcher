@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>wid</th>
+      <th>pid</th>
+      <th>kill</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let w of workers; index as i">
+      <td>{{w.wid}}</td>
+      <td>{{w.pid}}</td>
+      <td><button (click) = "kill(i)">kill</button></td>
+    </tr>
+  </tbody>
+</table>
