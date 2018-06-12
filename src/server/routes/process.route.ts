@@ -9,7 +9,9 @@ router.get('/', (req: Request, res: Response) => {
     console.log(`process ${process.pid} recieved request`);
 
     process.prependOnceListener('message', (response: Message) => {
-        res.json(response.data);
+        if (response.code === MessageType.RESPONSE_WORKERS) {
+            res.json(response.data);
+        }
     });
 
     const msg: Message = new Message(String(process.pid), MessageType.REQUEST_WORKERS );
@@ -22,7 +24,9 @@ router.post('/', (req: Request, res: Response) => {
     console.log(`process ${process.pid} recieved request`);
 
     process.prependOnceListener('message', (response: Message) => {
-        res.json('aaa');
+        if (response.code === MessageType.RESPONSE_SHUTDOWN) {
+            res.json(response.data);
+        }
     });
 
     const pid = req.body.pid;
