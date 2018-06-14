@@ -1,7 +1,6 @@
 import { Worker } from 'cluster';
 import * as cluster from 'cluster';
 import { Message, MessageType } from './classes';
-import { WSAESHUTDOWN } from 'constants';
 
 export class Utility {
     public static setMessageHandling(w: Worker) {
